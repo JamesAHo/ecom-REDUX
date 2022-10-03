@@ -15,7 +15,8 @@ import {
 export const reducer = (state, action) => {
   switch (action.type) {
     // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-    // Your comment here
+    // if the action UPDATE_PRODUCTS is called , return a new object with the updated array
+    // the new array in this case will be the product
     case UPDATE_PRODUCTS:
       return {
         ...state,
@@ -35,7 +36,8 @@ export const reducer = (state, action) => {
         cart: [...state.cart, ...action.products],
       };
     // TODO: Add a comment describing the functionality of the UPDATE_CART_QUANTITY case
-    // Your comment here
+    // WHen the UPDATE_CART_QUANTITY action is called , first is to identify the boolean cartOpen to true
+    // After cartOpen is true, the cart open will return and map the product quanity then return the new array of products in the cart
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
@@ -49,7 +51,9 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing the functionality of the REMOVE_FROM_CART case
-    // Your comment here
+    // In the REMOVE_FROM_CART case, the data will be filter out as for the remove action
+    // the new State object is the quanity of the array after filtered out
+    // after filtered out the new state of that current array will be return 
     case REMOVE_FROM_CART:
       let newState = state.cart.filter((product) => {
         return product._id !== action._id;
@@ -87,7 +91,7 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing what the default case is for
-    // Your comment here
+    // this is the default state with no action is being added.
     default:
       return state;
   }

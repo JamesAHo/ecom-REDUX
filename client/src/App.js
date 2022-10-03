@@ -18,6 +18,13 @@ import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
+// import Provider package from react-redux
+import { Provider  } from 'react-redux';
+
+// import the redux store that created from redux folder
+import store from './redux/store';
+
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -42,7 +49,10 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+
+          {/* <StoreProvider> */}
+          {/* replacing contextAPI to Redux */}
+          <Provider store={store} >
             <Nav />
             <Routes>
               <Route 
@@ -74,7 +84,9 @@ function App() {
                 element={<NoMatch />} 
               />
             </Routes>
-          </StoreProvider>
+           {/* replacing contextAPI to Redux */}
+          {/* </StoreProvider> */}
+          </Provider>
         </div>
       </Router>
     </ApolloProvider>
